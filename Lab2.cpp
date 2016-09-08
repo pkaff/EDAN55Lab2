@@ -11,8 +11,9 @@ int flip() {
   return rand() % 2;
 }
 
-int main() {
-  ifstream ifs("/h/d2/i/tpi11nfa/Documents/EDAN55/pw09_100.9.txt");
+void run(string filename) {
+  ifstream ifs(filename);
+
   string line = "";
   getline(ifs, line);
   istringstream iss(line);
@@ -54,4 +55,15 @@ int main() {
     cutsizes[r] = cutSize;
     cutSum += cutSize;
   }
+  ofstream ofs(filename.substr(0, filename.size() - 4) + "output.txt");
+  ofs << "Average cut size: " << (double)cutSum / ROUNDS << endl;
+  ofs << "cut sizes: " << endl;
+  for (int s : cutsizes) {
+    ofs << s << endl;
+  }
+}
+
+int main() {
+  run("/h/d2/i/tpi11nfa/Documents/EDAN55/pw09_100.9.txt");
+  run("/h/d2/i/tpi11nfa/Documents/EDAN55/matching_1000.txt");
 }

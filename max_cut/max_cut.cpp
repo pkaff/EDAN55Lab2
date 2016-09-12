@@ -45,11 +45,9 @@ void run(string filename) {
 		}
 		int cutSize = 0;
 		for (int i = 1; i <= nV; ++i) {
-			if (nodes[i]) {
-				for (const pair<int, int>& p : graph[i]) {
-					if (!nodes[p.first]) {
-						cutSize += p.second;
-					}
+			for (const pair<int, int>& p : graph[i]) {
+				if (nodes[i] != nodes[p.first]) {
+					cutSize += p.second;
 				}
 			}
 		}
@@ -65,6 +63,6 @@ void run(string filename) {
 }
 
 int main() {
-	run("/h/d2/i/tpi11nfa/Documents/EDAN55/pw09_100.9.txt");
-	run("/h/d2/i/tpi11nfa/Documents/EDAN55/matching_1000.txt");
+	run("C:\\Users\\biz\\Documents\\Visual Studio 2015\\Projects\\max_cut\\pw09_100.9.txt");
+	run("C:\\Users\\biz\\Documents\\Visual Studio 2015\\Projects\\max_cut\\matching_1000.txt");
 }
